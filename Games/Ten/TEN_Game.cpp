@@ -1,28 +1,28 @@
 /*
- *  ST_Game.cpp
+ *  TEN_Game.cpp
  *  VectorStorm
  *
  *  Created by Trevor Powell on 18-02-2013.
  *  Copyright 2013 Trevor Powell.  All rights reserved.
  *
  */
-#include "ST_Game.h"
-#include "ST_Scenes.h"
+#include "TEN_Game.h"
+#include "TEN_Scenes.h"
 
-REGISTER_MAINGAME("Sturdy", stGame);
+REGISTER_MAINGAME("Ten", tenGame);
 
-stGame::stGame():
+tenGame::tenGame():
 	m_currentMode(-1),
 	m_nextMode(-1)
 {
 }
 
-stGame::~stGame()
+tenGame::~tenGame()
 {
 }
 
 void
-stGame::Init()
+tenGame::Init()
 {
 	m_sceneCount = SCENE_MAX;
 	m_nextMode = -1;
@@ -35,7 +35,7 @@ stGame::Init()
 
 
 void
-stGame::Deinit()
+tenGame::Deinit()
 {
 	SetGameMode(NULL);
 	for ( int i = 0; i < MODE_MAX; i++ )
@@ -46,18 +46,18 @@ stGame::Deinit()
 }
 
 void
-stGame::Update( float timeStep )
+tenGame::Update( float timetenep )
 {
 	if ( m_nextMode != m_currentMode )
 	{
 		m_currentMode = m_nextMode;
 		SetGameMode( m_mode[m_nextMode] );
 	}
-	coreGame::Update(timeStep);
+	coreGame::Update(timetenep);
 }
 
 void
-stGame::SetMode(Mode m)
+tenGame::SetMode(Mode m)
 {
 	m_nextMode = m;
 }

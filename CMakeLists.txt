@@ -7,7 +7,7 @@ else()
 	set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel")
 endif()
 
-project( Sturdy )
+project( ten )
 
 add_subdirectory( vectorstorm )
 
@@ -46,18 +46,18 @@ endif ()
 # find . -type d
 include_directories(
 	Games
-	Games/Sturdy
+	Games/Ten
 	Games/Preferences
 	)
 
 
 set(SOURCES
 	main.cpp
-	Games/Sturdy/ST_Game.cpp
+	Games/Ten/TEN_Game.cpp
 	)
 
 add_executable(
-	Sturdy
+	ten
 	MACOSX_BUNDLE
 	${SOURCES}
 	${PLATFORM_SOURCES}
@@ -128,7 +128,7 @@ set(LIBRARIES
 	${BOX2D_LIBRARY}
 	)
 
-target_link_libraries( Sturdy
+target_link_libraries( ten
 	vectorstorm
 	${LIBRARIES}
 	${PLATFORM_LIBRARIES} 
@@ -136,7 +136,7 @@ target_link_libraries( Sturdy
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
 
-install(TARGETS Sturdy
+install(TARGETS ten
 	BUNDLE DESTINATION bin
 	RUNTIME DESTINATION bin
 	LIBRARY DESTINATION lib
@@ -144,12 +144,12 @@ install(TARGETS Sturdy
 	)
 
 if(APPLE)
-	set_target_properties(Sturdy PROPERTIES XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "/Library/Frameworks/")	# Working around bug in XCode 4.3.3
+	set_target_properties(ten PROPERTIES XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "/Library/Frameworks/")	# Working around bug in XCode 4.3.3
 	set(CMAKE_INSTALL_NAME_DIR @executable_path)
 	set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
-	set_target_properties(Sturdy PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist")
+	set_target_properties(ten PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist")
 
-	set_target_properties(Sturdy
+	set_target_properties(ten
 		PROPERTIES
 		INSTALL_RPATH "@executable_path/../Frameworks"
 		INSTALL_RPATH_USER_LINK_PATH TRUE
@@ -160,14 +160,14 @@ if(APPLE)
 		#XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH_RELEASE "NO"
 		)
 
-	add_custom_command(TARGET Sturdy
+	add_custom_command(TARGET ten
 		POST_BUILD
-		COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CFG_INTDIR}/Sturdy.app/Contents/Resources
-		COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/Data ${CMAKE_CFG_INTDIR}/Sturdy.app/Contents/Resources/
+		COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CFG_INTDIR}/ten.app/Contents/Resources
+		COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/Data ${CMAKE_CFG_INTDIR}/ten.app/Contents/Resources/
 		COMMENT "Copying Data files into place"
 		)
 
-	set(BUNDLE "${CMAKE_CURRENT_BINARY_DIR}/Sturdy.app")
+	set(BUNDLE "${CMAKE_CURRENT_BINARY_DIR}/ten.app")
 	set(DIRS "/usr/local/lib")
 	install(CODE "
 		set(BU_CHMOD_BUNDLE_ITEMS ON)

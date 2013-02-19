@@ -1,15 +1,15 @@
 /*
- *  ST_Game.h
+ *  TEN_Game.h
  *  VectorStorm
  *
  *  Created by Trevor Powell on 18-02-2013.
  *  Copyright 2013 Trevor Powell.  All rights reserved.
  *
  */
-#ifndef MC_GAME_H
-#define MC_GAME_H
+#ifndef TEN_GAME_H
+#define TEN_GAME_H
 
-class stGame: public coreGame, public vsSingleton<stGame>
+class tenGame: public coreGame, public vsSingleton<tenGame>
 {
 public:
 	enum Mode
@@ -24,19 +24,19 @@ private:
 	int m_nextMode;
 
 public:
-	stGame();
-	virtual ~stGame();
+	tenGame();
+	virtual ~tenGame();
 
 	virtual void Init();
 	virtual void Deinit();
 
-	void Start();
+	void tenart();
 	void SetMode(Mode m);
 
 	//vsFont *GetFont() { return m_font; }
 
-	virtual void Update( float timeStep );
+	virtual void Update( float timetenep );
 };
 
-#endif /* MC_GAME_H */
+#endif /* TEN_GAME_H */
 
