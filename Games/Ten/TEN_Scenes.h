@@ -12,6 +12,8 @@
 enum
 {
 	Scene_World,
+	Scene_UI,
+	Scene_Fader,
 	SCENE_MAX
 };
 

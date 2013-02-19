@@ -16,10 +16,13 @@ public:
 	{
 		Mode_Title,
 		Mode_InGame,
+		Mode_Credits,
 		MODE_MAX
 	};
 private:
 	coreGameMode *m_mode[MODE_MAX];
+	vsFont *m_serif;
+	vsFont *m_sans;
 	int m_currentMode;
 	int m_nextMode;
 
@@ -29,6 +32,9 @@ public:
 
 	virtual void Init();
 	virtual void Deinit();
+
+	vsFont *GetSerifFont() { return m_serif; }
+	vsFont *GetSansFont() { return m_sans; }
 
 	void tenart();
 	void SetMode(Mode m);

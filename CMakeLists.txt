@@ -52,8 +52,12 @@ include_directories(
 
 
 set(SOURCES
-	main.cpp
+	Games/Ten/Modes/TEN_ModeCredits.cpp
+	Games/Ten/Modes/TEN_ModeInGame.cpp
+	Games/Ten/Modes/TEN_ModeTitle.cpp
+	Games/Ten/TEN_Fader.cpp
 	Games/Ten/TEN_Game.cpp
+	main.cpp
 	)
 
 add_executable(

@@ -8,10 +8,15 @@
  */
 #include "TEN_Game.h"
 #include "TEN_Scenes.h"
+#include "Modes/TEN_ModeTitle.h"
+#include "Modes/TEN_ModeInGame.h"
+#include "Modes/TEN_ModeCredits.h"
 
 REGISTER_MAINGAME("Ten", tenGame);
 
 tenGame::tenGame():
+	m_serif(NULL),
+	m_sans(NULL),
 	m_currentMode(-1),
 	m_nextMode(-1)
 {
@@ -31,6 +36,12 @@ tenGame::Init()
 	{
 		m_mode[i] = NULL;
 	}
+	m_serif = new vsFont("FreeSerif.txt");
+	m_sans = new vsFont("FreeSans.txt");
+	m_mode[Mode_Title] = new tenModeTitle;
+	m_mode[Mode_InGame] = new tenModeInGame;
+	m_mode[Mode_Credits] = new tenModeCredits;
+	SetMode(Mode_Title);
 }
 
 
@@ -42,6 +53,8 @@ tenGame::Deinit()
 	{
 		vsDelete( m_mode[i] );
 	}
+	vsDelete( m_serif );
+	vsDelete( m_sans );
 	coreGame::Deinit();
 }
 
