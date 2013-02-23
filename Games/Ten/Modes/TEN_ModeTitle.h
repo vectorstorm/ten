@@ -9,6 +9,8 @@
 #ifndef TEN_MODETITLE_H
 #define TEN_MODETITLE_H
 
+class tenStarfield;
+
 class tenModeTitle: public coreGameMode
 {
 	vsSprite *m_title;

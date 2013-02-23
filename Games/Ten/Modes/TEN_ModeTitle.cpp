@@ -8,6 +8,7 @@
  */
 #include "TEN_ModeTitle.h"
 #include "TEN_Game.h"
+#include "TEN_Starfield.h"
 #include "TEN_Scenes.h"
 
 tenModeTitle::tenModeTitle()

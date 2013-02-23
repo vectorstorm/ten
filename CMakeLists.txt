@@ -11,6 +11,19 @@ project( ten )
 
 add_subdirectory( vectorstorm )
 
+set(SOURCES
+	Games/Ten/Modes/TEN_ModeCredits.cpp
+	Games/Ten/Modes/TEN_ModeInGame.cpp
+	Games/Ten/Modes/TEN_ModeTitle.cpp
+	Games/Ten/TEN_Fader.cpp
+	Games/Ten/TEN_Camera.cpp
+	Games/Ten/TEN_Game.cpp
+	Games/Ten/TEN_Starfield.cpp
+	Games/Ten/TEN_Whale.cpp
+	main.cpp
+	)
+
+
 include_directories( SYSTEM
 	${OPENGL_INCLUDE_DIR}
 	${SDL_INCLUDE_DIR} 
@@ -23,7 +36,6 @@ include_directories( . vectorstorm vectorstorm/VS )
 
 set(PLATFORM_SOURCES)
 set(PLATFORM_LIBRARIES)
-
 
 if(UNIX)
 	if(APPLE)
@@ -50,15 +62,6 @@ include_directories(
 	Games/Preferences
 	)
 
-
-set(SOURCES
-	Games/Ten/Modes/TEN_ModeCredits.cpp
-	Games/Ten/Modes/TEN_ModeInGame.cpp
-	Games/Ten/Modes/TEN_ModeTitle.cpp
-	Games/Ten/TEN_Fader.cpp
-	Games/Ten/TEN_Game.cpp
-	main.cpp
-	)
 
 add_executable(
 	ten

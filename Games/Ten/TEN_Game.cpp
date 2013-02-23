@@ -7,7 +7,9 @@
  *
  */
 #include "TEN_Game.h"
+#include "TEN_Camera.h"
 #include "TEN_Scenes.h"
+#include "TEN_Starfield.h"
 #include "Modes/TEN_ModeTitle.h"
 #include "Modes/TEN_ModeInGame.h"
 #include "Modes/TEN_ModeCredits.h"
@@ -15,6 +17,7 @@
 REGISTER_MAINGAME("Ten", tenGame);
 
 tenGame::tenGame():
+	//m_starfield(NULL),
 	m_serif(NULL),
 	m_sans(NULL),
 	m_currentMode(-1),
@@ -41,7 +44,14 @@ tenGame::Init()
 	m_mode[Mode_Title] = new tenModeTitle;
 	m_mode[Mode_InGame] = new tenModeInGame;
 	m_mode[Mode_Credits] = new tenModeCredits;
-	SetMode(Mode_Title);
+	SetMode(Mode_InGame);
+
+	m_camera = new tenCamera;
+
+	vsSystem::GetScreen()->GetScene(Scene_World)->SetCamera3D(m_camera);
+	vsSystem::GetScreen()->GetScene(Scene_World)->Set3D(true);
+	m_starfield = new tenStarfield;
+	m_starfield->RegisterOnScene(Scene_World);
 }
 
 
@@ -55,6 +65,7 @@ tenGame::Deinit()
 	}
 	vsDelete( m_serif );
 	vsDelete( m_sans );
+	vsDelete( m_starfield );
 	coreGame::Deinit();
 }
 
@@ -67,6 +78,12 @@ tenGame::Update( float timetenep )
 		SetGameMode( m_mode[m_nextMode] );
 	}
 	coreGame::Update(timetenep);
+}
+
+void
+tenGame::SetCameraFollow( vsSprite *follow )
+{
+	m_camera->Follow(follow);
 }
 
 void

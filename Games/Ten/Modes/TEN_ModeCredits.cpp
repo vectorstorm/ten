@@ -31,10 +31,10 @@ tenModeCredits::Init()
 	m_font = new vsFont("FreeSerif.txt");
 	m_credits = new vsFile("Credits.txt");
 
-	vsScene *s = vsSystem::GetScreen()->GetScene(Scene_Fader);
+	vsScene *s = vsSystem::GetScreen()->GetScene(Scene_UI);
 	m_fader = new tenFader( vsBox2D( s->GetTopLeftCorner(), s->GetBottomRightCorner() ) );
 
-	m_fader->RegisterOnScene( Scene_Fader );
+	m_fader->RegisterOnScene( Scene_UI );
 	m_fader->SetOut();
 	m_fader->FadeIn(2.f);
 

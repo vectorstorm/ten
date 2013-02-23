@@ -13,7 +13,7 @@ enum
 {
 	Scene_World,
 	Scene_UI,
-	Scene_Fader,
+	//Scene_Fader,
 	SCENE_MAX
 };
 

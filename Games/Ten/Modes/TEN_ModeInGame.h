@@ -9,11 +9,17 @@
 #ifndef TEN_MODEINGAME_H
 #define TEN_MODEINGAME_H
 
+class tenWhale;
+
 class tenModeInGame: public coreGameMode
 {
+	tenWhale *m_whale;
 public:
 	tenModeInGame();
 	virtual ~tenModeInGame();
+
+	virtual void Init();
+	virtual void Deinit();
 
 	virtual void Update( float timeStep );
 };

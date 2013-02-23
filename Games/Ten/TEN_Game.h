@@ -9,6 +9,10 @@
 #ifndef TEN_GAME_H
 #define TEN_GAME_H
 
+class tenCamera;
+class tenStarfield;
+class tenStar;
+
 class tenGame: public coreGame, public vsSingleton<tenGame>
 {
 public:
@@ -21,6 +25,8 @@ public:
 	};
 private:
 	coreGameMode *m_mode[MODE_MAX];
+	tenStarfield *m_starfield;
+	tenCamera *m_camera;
 	vsFont *m_serif;
 	vsFont *m_sans;
 	int m_currentMode;
@@ -36,7 +42,7 @@ public:
 	vsFont *GetSerifFont() { return m_serif; }
 	vsFont *GetSansFont() { return m_sans; }
 
-	void tenart();
+	void SetCameraFollow( vsSprite *follow );
 	void SetMode(Mode m);
 
 	//vsFont *GetFont() { return m_font; }
